@@ -1,0 +1,29 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+
+.navbar {
+	margin-bottom: 20px;
+}
+
+
+img {
+	border-radius: 8px;
+}
+
+.carousel-inner img {
+  margin: auto;
+}
+
+h4 {
+  color: white;
+  font-size: 60px;
+}
+
+.panel-body {
+	text-align: center;
+}
+
+

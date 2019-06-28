@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<head th:replace="common/header :: common-header" />
+<meta charset="ISO-8859-1">
+<title>Found results</title>
+</head>
+<body>
+	<div th:replace="common/header :: navbar" />
+	<div align="center">
+	
+		<h1>Found fox</h1>
+		<br />
+			
+			<table class="table" border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Fox ID</th>
+					<th>Species</th>
+					<th>Name</th>
+					<th>Image Url</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="fox : ${foxList}">
+					<td th:text="${fox.id}">Fox ID</td>
+					<td th:text="${fox.species}">Species</td>
+					<td th:text="${fox.name}">Name</td>
+					<td th:text="${fox.url}">Image Url</td>
+					<td>
+							
+						<a type="button" class="btn btn-primary" th:href="@{'/edit/' + ${fox.id}}">Edit</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a type="button" class="btn btn-danger" th:href="@{'/delete/' + ${fox.id}}">Delete</a>
+					<td/>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>
