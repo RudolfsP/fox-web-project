@@ -5,8 +5,11 @@
 <head th:replace="common/header :: common-header" />
 <meta charset="ISO-8859-1">
 <title>Foxes</title>
+
+
+
 </head>
-<body>
+<body id="body" onload="changeColor()">
 	<div th:replace="common/header :: navbar" />
 	<div align="center">
 		<h1>Fox Table</h1>
@@ -41,4 +44,10 @@
 	</div>
 	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
+
+<script src="/js/scripts.js">
+	// Function to change webpage background color
+
+</script>
+
 </html>

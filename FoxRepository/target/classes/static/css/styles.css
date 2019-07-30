@@ -1,13 +1,46 @@
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+}
+.info-msg {
+  color: #059;
+  background-color: #BEF;
+}
+.success-msg {
+  color: #270;
+  background-color: #DFF2BF;
+}
+.warning-msg {
+  color: #9F6000;
+  background-color: #FEEFB3;
+
+}
+.error-msg {
+  color: #D8000C;
+  background-color: #FFBABA;
+  width: 50%;
+  margin: auto;
+}
+
+.grid-container {
+  display: grid;
+}
+
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;
-
 }
 
 .navbar {
 	margin-bottom: 20px;
 }
-
 
 img {
 	border-radius: 8px;
@@ -27,3 +60,17 @@ h4 {
 }
 
 
+
+
+
+
+/*
+display: grid;
+    grid-template-columns: 20% auto 20%;
+    grid-template-rows: 10% auto auto 10%;
+
+grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+*/

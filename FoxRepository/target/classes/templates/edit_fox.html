@@ -5,8 +5,14 @@
 <head th:replace="common/header :: common-header" />
 <meta charset="ISO-8859-1">
 <title>Edit Fox</title>
+
+<script src=/js/scripts.js>
+	// Function to change webpage background color
+
+</script>
+
 </head>
-<body>
+<body id="body" onload="changeColor()">
 	<div th:replace="common/header :: navbar" />
 	<div align="center">
 	
@@ -34,6 +40,9 @@
 					<td colspan="2"><button type="submit">Save</button></td>
 				</tr>
 			</table>
+			
+			<img class="img-fluid" th:src="${fox.url}" alt="...">
+			
 		</form>
 	</div>
 	<div th:replace="common/header :: body-bottom-scripts" />

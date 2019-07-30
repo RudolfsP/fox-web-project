@@ -5,14 +5,26 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.BeanNameViewResolver;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.webApp.Fox;
 import com.webApp.FoxService;
@@ -24,6 +36,7 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
+				
 		List<Fox> listFoxes = service.listAll();
 		
 		model.addAttribute("listFoxes", listFoxes);
@@ -77,8 +90,7 @@ public class HomeController {
 
 	@RequestMapping("/delete/{id}")
 	public String deleteFox(@PathVariable(name = "id") Long id) {
-		service.delete(id);
-		
+		service.delete(id);	
 		return "redirect:/foxTable";
 	}
 	
@@ -97,6 +109,40 @@ public class HomeController {
 	        return toReturn;
 	}
 	
+    @RequestMapping(value = "/api/getAllFoxes")
+    public String getAllFoxesJSON(Model model)
+    {
+        model.addAttribute("getAllFoxes", service.listAll());
+        return "jsonTemplate";
+    }
+    
+    @RequestMapping(value = "/api/getFox/{id}")
+    public String getFoxesByIDJSON(@PathVariable(name = "id") String id, Model model)
+    {
+    	
+    	try {
+    		model.addAttribute("getFox", service.get(Long.parseLong(id)));
+            return "jsonTemplate";
+            
+    	} catch(NumberFormatException e) {
+    		return "badRequest";
+    	}
+    }
+    
+    @RequestMapping(value = "/api/getFoxByName/{name}")
+    public String getFoxesByNameJSON(@PathVariable(name = "name") String name, Model model)
+    {
+        model.addAttribute("getFoxByName", service.listAllFoxesByID(name));
+        return "jsonTemplate";
+    }
+    
+    @RequestMapping(value = "/api/getFoxBySpecies/{species}")
+    public String getFoxesBySpeciesJSON(@PathVariable(name = "species") String species, Model model)
+    {
+        model.addAttribute("getFoxByName", service.listAllFoxesByID(species));
+        return "jsonTemplate";
+    }
+    
 	@RequestMapping("/randomFox")
 	public String randomFox(Model model) {
 		List<Fox> listFoxes = service.listAll();
@@ -128,6 +174,32 @@ public class HomeController {
 		
 		return "randomFox";
 	}
+	
+	@RequestMapping("/settings")
+	public String openSettingsPage(HttpServletResponse response) {
+		Cookie cookie = new Cookie("testCookie", "testCookieValue");
+		cookie.setMaxAge(24 * 60 * 60);
+		
+		response.addCookie(cookie);
+		
+		return "settings";
+	}
+		
+	@Configuration
+	public class RESTConfiguration
+	{
+	    @Bean
+	    public View jsonTemplate() {
+	        MappingJackson2JsonView view = new MappingJackson2JsonView();
+	        view.setPrettyPrint(true);
+	        return view;
+	    }
+	     
+	    @Bean
+	    public ViewResolver viewResolver() {
+	        return new BeanNameViewResolver();
+	    }
+	}	
 	
 	//this method returns a list with randomly shuffled numbers
 	public List<Fox> shuffleList(List<Fox> shuffleList) {

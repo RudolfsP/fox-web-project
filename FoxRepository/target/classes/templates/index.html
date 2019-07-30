@@ -4,12 +4,13 @@
 	xmlns="http://w3.org/1000/xhtml">
 
 
+<script src=/js/scripts.js>
+	// Function to change webpage background color
+
+</script>
 
 <head th:replace="common/header :: common-header" />
-
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-
-<body >
+<body id="body" onload="changeColor()">
 	<div th:replace="common/header :: navbar" />
 
 
@@ -76,4 +77,5 @@
 
 	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
+
 </html>

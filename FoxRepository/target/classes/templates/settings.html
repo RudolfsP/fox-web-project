@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns="http://w3.org/1000/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <head th:replace="common/header :: common-header" />
 <meta charset="ISO-8859-1">
-<title>Random Foxes</title>
+<title>Edit Fox</title>
+
 
 <script src=/js/scripts.js>
 	// Function to change webpage background color
@@ -12,16 +13,22 @@
 </script>
 
 </head>
+
 <body id="body" onload="changeColor()">
 	<div th:replace="common/header :: navbar" />
 	<div align="center">
 
-		<a href="new">Insert this fox into database</a> <input type="text"
-			th:value="${randomUrl}"> <br> <img class="img-fluid"
-			th:src="${randomUrl}" alt="...">
+		<div>
+			<label>Change Webpage Background To:</label>
+			<input id ="favcolor" type="color" value="#ff0000">
+			<button type="button" onclick="changeBodyBg(favcolor.value);">Submit</button>
+		</div>
+
 	</div>
 	<div th:replace="common/header :: body-bottom-scripts" />
+
+
+
+
 </body>
-
 </html>
-

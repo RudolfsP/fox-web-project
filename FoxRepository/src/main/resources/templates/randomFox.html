@@ -5,16 +5,23 @@
 <head th:replace="common/header :: common-header" />
 <meta charset="ISO-8859-1">
 <title>Random Foxes</title>
+
+<script src=/js/scripts.js>
+	// Function to change webpage background color
+
+</script>
+
 </head>
-<body>
+<body id="body" onload="changeColor()">
 	<div th:replace="common/header :: navbar" />
 	<div align="center">
-	
-		<a href="new">Insert this fox into database</a> 
-		<input type="text" th:value="${randomUrl}">
-		<br>
-		<img class="img-fluid" th:src="${randomUrl}" alt="...">
+
+		<a href="new">Insert this fox into database</a> <input type="text"
+			th:value="${randomUrl}"> <br> <img class="img-fluid"
+			th:src="${randomUrl}" alt="...">
 	</div>
 	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
+
 </html>
+

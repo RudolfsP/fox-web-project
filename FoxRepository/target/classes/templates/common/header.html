@@ -5,18 +5,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-
 <title>My App</title>
 
 <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="/css/styles.css" rel="stylesheet">
+ <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 
 </head>
 
-<body>
+<body id="body" onload="changeColor()">
 	<div th:fragment="navbar">
 		<div>
 			<!-- Static navbar -->
@@ -28,12 +27,13 @@
 					<div id="navbar">
 						<ul class="nav navbar-nav navbar-left">
 
-							<li class="nav-item"><a class="nav-link" href="foxTable">View
+							<li class="nav-item"><a class="nav-link" href="/foxTable">View
 									Fox table</a></li>
-							<li class="nav-item"><a class="nav-link" href="new">Add
+							<li class="nav-item"><a class="nav-link" href="/new">Add
 									a new fox</a></li>
-							<li class="nav-item"><a class="nav-link" href="randomFox">Show
+							<li class="nav-item"><a class="nav-link" href="/randomFox">Show
 									me a random fox</a></li>
+							<li class="nav-item"><a class="nav-link" href="/settings">Settings</a></li>
 
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
@@ -61,8 +61,17 @@
 								
 								<script>
 									function myFunction() {
-										window.open("/find/"
-												+ frm1.fname.value, "_self")
+										
+										if (frm1.fname.value === "") {
+											window.open("/"
+													+ frm1.fname.value, "_self")
+										}
+										
+										else {
+											window.open("/find/"
+													+ frm1.fname.value, "_self")
+										}
+										
 									}
 								</script>
 
@@ -84,12 +93,16 @@
 			<br>
 
 		</div>
-
+	
 		<div th:fragment="body-bottom-scripts">
 			<script
 				src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 			<script src="/js/bootstrap.min.js"></script>
+
 		</div>
 
 		<body />
+		
+
+			
 </html>
