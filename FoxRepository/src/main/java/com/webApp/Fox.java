@@ -20,7 +20,6 @@ public class Fox {
 	
 	
 	public Fox() {
-		url = "http://randomfox.ca//images//75.jpg";		
 	}
 	
 	public Fox(String species, String name, String url) {
@@ -61,7 +60,5 @@ public class Fox {
 		this.url = url;
 	}
 
-	
-	
 	
 }

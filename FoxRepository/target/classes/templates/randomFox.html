@@ -6,21 +6,18 @@
 <meta charset="ISO-8859-1">
 <title>Random Foxes</title>
 
-<script src=/js/scripts.js>
-	// Function to change webpage background color
-
-</script>
+<script src=/js/scripts.js> </script>
 
 </head>
 <body id="body" onload="changeBackgroundByCookie()">
 	<div th:replace="common/header :: navbar" />
 	<div align="center">
 
-		<a href="new">Insert this fox into database</a> <input type="text" onclick="changeBodyBg(favcolor.value);"
-			th:value="${randomUrl}"> <br> <img class="img-fluid"
-			th:src="${randomUrl}" alt="...">
+		<a href="new" onclick="setUrlNewFox(urlBox.value)">Insert this fox into database</a> 
+		<input id="urlBox" type="hidden" th:value="${randomUrl}"> <br> 
+		<img class="img-fluid" th:src="${randomUrl}" alt="...">
 	</div>
-	
+
 	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
 
