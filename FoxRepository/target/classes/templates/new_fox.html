@@ -12,7 +12,7 @@
 </script>
 
 </head>
-<body id="body" onload="changeColor()">
+<body id="body" onload="changeBackgroundByCookie()">
 	<div th:replace="common/header :: navbar" />
 	<div align="center">
 		
@@ -24,16 +24,17 @@
 					<td>Fox Species:</td>
 					<td><input type="text" th:field="*{species}" /></td>
 				</tr>
+				<br>
 				<tr>
 					<td>Fox Name:</td>
 					<td><input type="text" th:field="*{name}" /></td>
 				</tr>
 				<tr>
 					<td>Fox Url:</td>
-					<td><input type="text" th:field="*{url}" /></td>
+					<td><input id="url" type="text" th:field="*{url}" /></td>
 				</tr>
 				<tr>
-					<td colspan="2"><button type="submit">Save</button></td>
+					<td colspan="2"><button type="submit" class="btn btn-default" >Save</button></td>
 				</tr>
 			</table>
 		</form>

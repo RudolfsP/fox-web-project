@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +29,7 @@ import com.webApp.FoxService;
 @Controller
 public class HomeController {
 	@Autowired
-	private FoxService service;
+	private FoxService service;	
 	
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
@@ -73,12 +70,17 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("fox") Fox fox) {
+	public String saveFox(@ModelAttribute("fox") Fox fox) {
 		service.save(fox);
 		
 		return "redirect:/foxTable";
 	}
-
+	
+//	@RequestMapping(value = "/postFox", method = RequestMethod.POST)
+//	public String addFox(@ModelAttribute("fox") Fox fox) {
+//		
+//	}
+		
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditFoxPage(@PathVariable(name = "id") Long id) {
 		ModelAndView mav = new ModelAndView("edit_fox");

@@ -7,6 +7,8 @@
 
 <title>My App</title>
 
+<script src=/js/scripts.js></script>
+
 <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 
@@ -15,11 +17,12 @@
 
 </head>
 
-<body id="body" onload="changeColor()">
-	<div th:fragment="navbar">
+<body id="body" >
+	<div th:fragment="navbar" >
 		<div>
 			<!-- Static navbar -->
-			<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+			<nav id="navbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" onload="changeNavbarColor()">
+				
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="/">Fox Repository</a>
@@ -54,26 +57,11 @@
 										placeholder="Search by species or name">
 									
 									
-									<button type="button" onclick="myFunction()" class="btn btn-default">Search</button>
+									<button type="button" onclick="findFox()" class="btn btn-default">Search</button>
 										</div>
 								
 							</form>	
 								
-								<script>
-									function myFunction() {
-										
-										if (frm1.fname.value === "") {
-											window.open("/"
-													+ frm1.fname.value, "_self")
-										}
-										
-										else {
-											window.open("/find/"
-													+ frm1.fname.value, "_self")
-										}
-										
-									}
-								</script>
 
 
 							<!-- </form> -->
@@ -101,7 +89,7 @@
 
 		</div>
 
-		<body />
+		<body/>
 		
 
 			

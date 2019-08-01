@@ -1,8 +1,24 @@
-	function changeBodyBg(color) {
-		document.body.style.background = color;
-		setCookie("color", color, 365);
-
+	function changeBodyBg(backGroundColor, navbarColor) {
+	
+		//document.body.style.background = color;
+		setCookie("color", backGroundColor, 365);
+		setCookie("navbar", navbarColor, 365);
+		alert("New background succesfully applied");
 		//document.getElementById(id);
+	}
+	
+	//new navbar function
+//	function changeNavbarBg(color) {
+//		setCookie("navbar", color, 365);
+//		alert("Navbar color changed");
+//	}
+	
+	function changeBc(color) {
+		document.body.style.background = color;
+	}
+	
+	function changeNav(color) {
+		document.getElementById("navbar").style.background = color;
 	}
 
 	function setCookie(cname, cvalue, exdays) {
@@ -38,8 +54,32 @@
 
 	}
 	
-	
-	function changeColor() {
-		document.getElementById("body").onload = changeBackgroundByCookie();
+	//new navbar function
+	function changeNavbarByCookie() {
+		//alert(getCookie("color"));
+		var value = getCookie("navbar");
+		//console.log(value);
+		document.getElementById("navbar").style.background = value;
+		//document.getElementById("")
 	}
+		
+	function findFox() {
+		document.getElementById("body").onload = changeBackgroundByCookie();
+		document.getElementById("navbar").onload = changeNavbarByCookie();
+	}
+	
+	function myFunction() {
+		
+		if (frm1.fname.value === "") {
+			window.open("/"
+					+ frm1.fname.value, "_self")
+		}
+		
+		else {
+			window.open("/find/"
+					+ frm1.fname.value, "_self")
+		}
+		
+	}
+	
 	

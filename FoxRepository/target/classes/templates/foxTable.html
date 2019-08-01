@@ -6,10 +6,12 @@
 <meta charset="ISO-8859-1">
 <title>Foxes</title>
 
-
+<script src="/js/scripts.js">
+	// Function to change webpage background color
+</script>
 
 </head>
-<body id="body" onload="changeColor()">
+<body id="body" onload="changeBackgroundByCookie()">
 	<div th:replace="common/header :: navbar" />
 	<div align="center">
 		<h1>Fox Table</h1>
@@ -35,19 +37,14 @@
 					<a type="button" class="btn btn-primary"
 						th:href="@{'/edit/' + ${fox.id}}">Edit</a>
 						&nbsp;&nbsp;&nbsp;&nbsp; 
-					<a type="button"
+					<a type="button" onclick="return (confirm('Are you sure you want to delete this entry?'))"
 						class="btn btn-danger" th:href="@{'/delete/' + ${fox.id}}">Delete</a>
-					<td />
+					<td />	
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
-
-<script src="/js/scripts.js">
-	// Function to change webpage background color
-
-</script>
 
 </html>

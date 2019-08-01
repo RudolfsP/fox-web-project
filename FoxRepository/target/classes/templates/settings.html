@@ -9,26 +9,29 @@
 
 <script src=/js/scripts.js>
 	// Function to change webpage background color
-
 </script>
 
 </head>
 
-<body id="body" onload="changeColor()">
+<body id="body" onload="changeBackgroundByCookie()">
 	<div th:replace="common/header :: navbar" />
 	<div align="center">
 
 		<div>
 			<label>Change Webpage Background To:</label>
-			<input id ="favcolor" type="color" value="#ff0000">
-			<button type="button" onclick="changeBodyBg(favcolor.value);">Submit</button>
+			<input id ="favcolor" type="color" value="#FFFFFF" onchange="changeBc(favcolor.value);">
+			
+			<br>
+			<br>
+			<label>Change Navbar Color To:</label>
+			<input id ="navcolor" type="color" value="#000000" onchange="changeNav(navcolor.value);">
+			<br>
+			<br>
+			<button type="button" onclick="changeBodyBg(favcolor.value, navcolor.value);" class="btn btn-default">Save</button>
 		</div>
 
 	</div>
 	<div th:replace="common/header :: body-bottom-scripts" />
-
-
-
 
 </body>
 </html>

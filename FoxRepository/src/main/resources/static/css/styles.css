@@ -59,10 +59,18 @@ h4 {
 	text-align: center;
 }
 
-
-
-
-
+input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 5%;
+    height: 1.9vw;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+}
 
 /*
 display: grid;

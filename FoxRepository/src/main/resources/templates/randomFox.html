@@ -12,14 +12,15 @@
 </script>
 
 </head>
-<body id="body" onload="changeColor()">
+<body id="body" onload="changeBackgroundByCookie()">
 	<div th:replace="common/header :: navbar" />
 	<div align="center">
 
-		<a href="new">Insert this fox into database</a> <input type="text"
+		<a href="new">Insert this fox into database</a> <input type="text" onclick="changeBodyBg(favcolor.value);"
 			th:value="${randomUrl}"> <br> <img class="img-fluid"
 			th:src="${randomUrl}" alt="...">
 	</div>
+	
 	<div th:replace="common/header :: body-bottom-scripts" />
 </body>
 
