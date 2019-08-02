@@ -1,10 +1,10 @@
 	function changeBodyBg(backGroundColor, navbarColor) {
 	
-		//document.body.style.background = color;
+		// document.body.style.background = color;
 		setCookie("color", backGroundColor, 365);
 		setCookie("navbar", navbarColor, 365);
 		alert("New background succesfully applied");
-		//document.getElementById(id);
+		// document.getElementById(id);
 	}
 	
 	function setUrlNewFox(urlValue) {
@@ -37,7 +37,7 @@
 				c = c.substring(1);
 			}
 			if (c.indexOf(name) == 0) {
-				//alert(c.substring(name.length, c.length));
+				// alert(c.substring(name.length, c.length));
 				return c.substring(name.length, c.length);
 			}
 		}
@@ -45,34 +45,34 @@
 	}
 
 	function changeBackgroundByCookie() {
-		//alert(getCookie("color"));
+		// alert(getCookie("color"));
 		var value = getCookie("color");
 		
-		//console.log(value);
+		// console.log(value);
 		document.body.style.background = value;
 	}
 	
-	//new navbar function
+	// new navbar function
 	function changeNavbarByCookie() {
-		//alert("2");
-		//alert(getCookie("color"));
+		// alert("2");
+		// alert(getCookie("color"));
 		var value = getCookie("navbar");
-		//console.log(value);
+		// console.log(value);
 		document.getElementById("navbar").style.background = value;
-		//document.getElementById("")
+		// document.getElementById("")
 	}
 		
 	function changeBothBackgrounds() {
-		//console.log(document.cookie);
+		// console.log(document.cookie);
 		document.getElementById("body").onload = changeBackgroundByCookie();
 		document.getElementById("navbar").onload = changeNavbarByCookie();
 	}
 	
 	
 	function populateUrlField() {
-		//alert(getCookie("color"));
+		// alert(getCookie("color"));
 		var value = getCookie("foxurl");
-		//console.log(value);
+		// console.log(value);
 		document.getElementById("urlInputBox").value = value;
 
 	}
@@ -84,7 +84,7 @@
 	function myFunction() {
 		
 		if (frm1.fname.value === "") {
-			//window.open("/" + frm1.fname.value, "_self")	
+			// window.open("/" + frm1.fname.value, "_self")
 			alert("Fox was not found");
 		}
 		
@@ -92,6 +92,5 @@
 			window.open("/find/" + frm1.fname.value, "_self")
 		}
 	}
-	
-	
+    	
 	

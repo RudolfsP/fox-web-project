@@ -5,38 +5,38 @@
 <head th:replace="common/header :: common-header" />
 <meta charset="ISO-8859-1">
 <title>Add New Fox</title>
-
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
 <script src=/js/scripts.js>
 	// Function to change webpage background color
-
 </script>
 
 </head>
 <body id="body" onload="changeBothBackgrounds(); populateUrlField()">
 	<div th:replace="common/header :: navbar" />
 	<div align="center">
-		
+
 		<h1>Add new fox</h1>
 		<br />
 		<form action="#" th:action="@{/save}" th:object="${fox}" method="post">
-			<table border="0" cellpadding="10">
-				<tr>
-					<td>Fox Species:</td>
-					<td><input type="text" th:field="*{species}" /></td>
-				</tr>
+			<div>
+				<p>Fox Species:</p>
+				<input type="text" th:field="*{species}" />
+				<br>
+
+				<br>
+				<p>Fox Name:</p>
+				<input type="text" th:field="*{name}" />
+				<br>
 				
-				<tr>
-					<td>Fox Name:</td>
-					<td><input type="text" th:field="*{name}" /></td>
-				</tr>
-				<tr>
-					<td>Fox Url:</td>
-					<td><input id="urlInputBox" type="text" th:field="*{url}" /></td>
-				</tr>
-				<tr>
-					<td colspan="2"><button type="submit" class="btn btn-default" >Save</button></td>
-				</tr>
-			</table>
+				<br>
+				<p>Fox Url:</p>
+				<input id="urlInputBox" type="text" th:field="*{url}" />
+				
+				<br>
+				<br>
+				<button type="submit" class="btn btn-default">Save</button>
+			</div>
+
 		</form>
 	</div>
 	<div th:replace="common/header :: body-bottom-scripts" />

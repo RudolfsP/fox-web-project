@@ -72,6 +72,22 @@ input[type="color"]::-webkit-color-swatch {
     border: none;
 }
 
+body{
+
+    background-color: #eee; 
+}
+
+table th , table td{
+    text-align: center;
+}
+
+table tr:nth-child(even){
+    background-color: #BEF2F5
+}
+
+.pagination li:hover{
+    cursor: pointer;
+}
 
 /*
 display: grid;
