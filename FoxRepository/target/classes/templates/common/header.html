@@ -21,13 +21,13 @@
 	<div th:fragment="navbar" >
 		<div>
 			<!-- Static navbar -->
-			<nav id="navbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" onload="changeNavbarColor()">
+			<nav id="navbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" >
 				
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<a class="navbar-brand" href="/">Fox Repository</a>
 					</div>
-					<div id="navbar">
+					<div>
 						<ul class="nav navbar-nav navbar-left">
 
 							<li class="nav-item"><a class="nav-link" href="/foxTable">View
@@ -57,13 +57,11 @@
 										placeholder="Search by species or name">
 									
 									
-									<button type="button" onclick="findFox()" class="btn btn-default">Search</button>
+									<button type="button" onclick="myFunction()" class="btn btn-default">Search</button>
 										</div>
 								
 							</form>	
 								
-
-
 							<!-- </form> -->
 
 
@@ -83,8 +81,8 @@
 		</div>
 	
 		<div th:fragment="body-bottom-scripts">
-			<script
-				src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ 			<script
+				src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 			<script src="/js/bootstrap.min.js"></script>
 
 		</div>

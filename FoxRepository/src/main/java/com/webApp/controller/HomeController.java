@@ -102,7 +102,7 @@ public class HomeController {
 		String toReturn = "find_fox";
 		
 		 List<Fox> foxList = service.listAllFoxesByID(id);
-	        model.addAttribute("foxList", foxList);
+	     model.addAttribute("foxList", foxList);
 	        
 	        if (foxList.size()==0) {
 	            toReturn="redirect:/";
@@ -179,11 +179,6 @@ public class HomeController {
 	
 	@RequestMapping("/settings")
 	public String openSettingsPage(HttpServletResponse response) {
-		Cookie cookie = new Cookie("testCookie", "testCookieValue");
-		cookie.setMaxAge(24 * 60 * 60);
-		
-		response.addCookie(cookie);
-		
 		return "settings";
 	}
 		

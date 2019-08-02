@@ -47,12 +47,14 @@
 	function changeBackgroundByCookie() {
 		//alert(getCookie("color"));
 		var value = getCookie("color");
+		
 		//console.log(value);
 		document.body.style.background = value;
 	}
 	
 	//new navbar function
 	function changeNavbarByCookie() {
+		//alert("2");
 		//alert(getCookie("color"));
 		var value = getCookie("navbar");
 		//console.log(value);
@@ -60,7 +62,8 @@
 		//document.getElementById("")
 	}
 		
-	function findFox() {
+	function changeBothBackgrounds() {
+		//console.log(document.cookie);
 		document.getElementById("body").onload = changeBackgroundByCookie();
 		document.getElementById("navbar").onload = changeNavbarByCookie();
 	}
@@ -74,9 +77,15 @@
 
 	}
 	
+	function isEmpty(str) {
+	    return (!str || 0 === str.length);
+	}
+	
 	function myFunction() {
+		
 		if (frm1.fname.value === "") {
-			window.open("/" + frm1.fname.value, "_self")
+			//window.open("/" + frm1.fname.value, "_self")	
+			alert("Fox was not found");
 		}
 		
 		else {
@@ -85,7 +94,4 @@
 	}
 	
 	
-	function isEmpty(str) {
-	    return (!str || 0 === str.length);
-	}
 	
