@@ -1,41 +1,42 @@
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+@import
+	url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')
+	;
 
-.info-msg,
-.success-msg,
-.warning-msg,
-.error-msg {
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 3px 3px 3px 3px;
+.info-msg, .success-msg, .warning-msg, .error-msg {
+	margin: 10px 0;
+	padding: 10px;
+	border-radius: 3px 3px 3px 3px;
 }
+
 .info-msg {
-  color: #059;
-  background-color: #BEF;
+	color: #059;
+	background-color: #BEF;
 }
-.success-msg {
-  color: #270;
-  background-color: #DFF2BF;
-}
-.warning-msg {
-  color: #9F6000;
-  background-color: #FEEFB3;
 
+.success-msg {
+	color: #270;
+	background-color: #DFF2BF;
 }
+
+.warning-msg {
+	color: #9F6000;
+	background-color: #FEEFB3;
+}
+
 .error-msg {
-  color: #D8000C;
-  background-color: #FFBABA;
-  width: 50%;
-  margin: auto;
+	color: #D8000C;
+	background-color: #FFBABA;
+	width: 50%;
+	margin: auto;
 }
 
 .grid-container {
-  display: grid;
+	display: grid;
 }
 
-
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .navbar {
@@ -47,12 +48,12 @@ img {
 }
 
 .carousel-inner img {
-  margin: auto;
+	margin: auto;
 }
 
 h4 {
-  color: white;
-  font-size: 60px;
+	color: white;
+	font-size: 60px;
 }
 
 .panel-body {
@@ -60,34 +61,81 @@ h4 {
 }
 
 input[type="color"] {
-    -webkit-appearance: none;
-    border: none;
-    width: 5%;
-    height: 1.9vw;
+	-webkit-appearance: none;
+	border: none;
+	width: 5%;
+	height: 1.9vw;
 }
+
 input[type="color"]::-webkit-color-swatch-wrapper {
-    padding: 0;
+	padding: 0;
 }
+
 input[type="color"]::-webkit-color-swatch {
-    border: none;
+	border: none;
 }
 
-body{
-
-    background-color: #eee; 
+body {
+	background-color: #eee;
 }
 
-table th , table td{
-    text-align: center;
+table th, table td {
+	text-align: center;
 }
 
-table tr:nth-child(even){
-    background-color: #BEF2F5
+table tr:nth-child(even) {
+	background-color: #BEF2F5
 }
 
-.pagination li:hover{
-    cursor: pointer;
+.pagination li:hover {
+	cursor: pointer;
 }
+
+
+.btn-no-waves .btn.waves-effect {
+	position: static;
+}
+
+
+.rec_item {
+	float: left;
+	margin: 0 1.5%;
+	
+}
+
+.article {
+	position:fixed;
+  	left:0px;
+   	bottom:150px;
+   	height:30px;
+   	width:100%;
+	padding-bottom: 3vw; 
+	/*padding-bottom: 3vw !important; */
+}
+
+
+.movieBottom {
+	width: 100%;
+	margin: auto;
+	margin-bottom: 2em;
+}
+
+.posterImage {
+	width: 300px;
+    height: 424px;
+} 
+
+.imdbSpan {
+	font-size: 18px;
+}
+
+.specialP {
+	text-align: left;
+
+}
+
+
+
 
 /*
 display: grid;

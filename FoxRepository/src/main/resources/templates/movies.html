@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<head th:replace="common/header :: common-header" />
+<meta charset="ISO-8859-1">
+<title>Edit Fox</title>
+
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<script src=/js/scripts.js>
+	// Function to change webpage background color
+</script>
+
+</head>
+
+<body id="body" th:onload="changeBothBackgrounds(); displayErrorMessage([[${errorMessage}]])">
+	<div th:replace="common/header :: navbar" />
+
+
+	<form class="form-inline" id="frm2">
+
+		<!-- <input type="text" name="fname" placeholder="Search by species or name"> -->
+
+		<div class="form-group" style="float: left; padding: 0px 20px 0px 20px;">
+			<input type="text" name="fname2" class="form-control"
+				placeholder="Find movie by title">
+
+
+			<button type="button" onclick="findMovie()" class="btn btn-default">Search</button>
+			<a type="button" th:href="@{'/randomMovie'}" class="btn btn-default">Random movie</a>
+			<!-- <button type="button" th:onclick="@{'/randomMovie/' + ${movieList[0].title}}" class="btn btn-default">Random movie</button> -->
+		</div>
+
+	</form>
+
+
+	<div style="min-height: 30vw; width: 100%;"></div>
+
+
+
+		<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>

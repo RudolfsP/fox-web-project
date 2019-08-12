@@ -18,7 +18,6 @@ public class Fox {
 	private String name;
 	private String url;
 	
-	
 	public Fox() {
 	}
 	

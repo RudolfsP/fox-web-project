@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<head th:replace="common/header :: common-header" />
+<meta charset="ISO-8859-1">
+<title>Found results</title>
+
+<link rel="stylesheet" th:href="@{/css/styles.css}" />
+<script src=/js/scripts.js>
+	// Function to change webpage background color
+</script>
+
+</head>
+<body id="body" onload="changeBothBackgrounds()">
+	<div th:replace="common/header :: navbar" />
+	<div align="center" style="padding: 0% 1.5% 0% 1.5%;">
+
+		<form class="form-inline" id="frm2">
+
+			<!-- <input type="text" name="fname" placeholder="Search by species or name"> -->
+
+			<div class="form-group" style="float: left;">
+				<input type="text" name="fname2" class="form-control"
+					placeholder="Find movie by title">
+
+				<button type="button" onclick="findMovie()" class="btn btn-default">Search</button>
+				<a type="button" th:href="@{'/randomMovie'}" class="btn btn-default">Random movie</a>
+			</div>
+
+		</form>
+
+		<div>
+			<h2 class="rec_heading_wrapper" style="text-align: center">
+				<span class="rec_heading" data-spec="p13nsims:tt0111161"
+					style="display: inline;" th:text="${movieList[0].title}">&nbsp;</span>
+			</h2>
+
+		</div>
+
+		<div style="min-height: 0.2vw; width: 100%;"></div>
+
+
+
+		<div style="float: left; min-height: 3vw;">
+			<img class="posterImage" th:src="${movieList[0].poster}" alt="...">
+		</div>
+
+
+		<div style="padding-left:320px;" >
+		
+		
+		
+			<div >
+				<p class="specialP">
+					<span></span><span class="imdbSpan">IMDB
+						rating: </span>
+						<span class="imdbSpan" id="imdbRating" th:text="${movieList[0].imdbRating}"></span>
+						<span class="imdbSpan">with </span><span class="imdbSpan" th:text="${movieList[0].votes}"></span>
+						<span class="imdbSpan"> votes,</span>
+						<span class="imdbSpan"> Metascore:</span>
+						<span class="imdbSpan" id="metascore" th:text="${movieList[0].metascore}"></span>
+				</p>
+				
+				<p class="specialP">
+					<span class="imdbSpan">Runtime: </span><span class="imdbSpan"
+						th:text="${movieList[0].runtime}"></span>
+				</p>
+				
+				<p class="specialP">
+					<span class="imdbSpan">Year: </span><span class="imdbSpan"
+						th:text="${movieList[0].year}"></span>
+				</p>
+				
+				<p class="specialP" style="text-align: left;">
+					<span class="imdbSpan">Genres:&nbsp;</span> <span class="imdbSpan"
+						th:text="${movieList[0].genre}"></span>
+				</p>
+				
+				<p class="specialP">
+					<span class="imdbSpan">Plot: </span><span class="imdbSpan"
+						th:text="${movieList[0].plot}"></span>
+				</p>
+				
+				<p class="specialP">
+					<span class="imdbSpan">Director: </span><span class="imdbSpan"
+						th:text="${movieList[0].director}"></span>
+				</p>
+				
+				<p class="specialP">
+					<span class="imdbSpan">Writer: </span><span class="imdbSpan"
+						th:text="${movieList[0].writer}"></span>
+				</p>
+				
+				<p class="specialP">
+					<span class="imdbSpan">Actors: </span><span class="imdbSpan"
+						th:text="${movieList[0].actors}"></span>
+				</p>
+				
+				<p class="specialP">
+					<span class="imdbSpan">Country: </span><span class="imdbSpan"
+						th:text="${movieList[0].country}"></span><span>,</span>
+						<span class="imdbSpan">Language: </span><span class="imdbSpan"
+						th:text="${movieList[0].lang}"></span>
+				</p>
+				
+		
+				
+				<p class="specialP">
+					<span class="imdbSpan">Awards: </span><span class="imdbSpan"
+						th:text="${movieList[0].awards}"></span>
+				</p>
+		
+			</div>
+
+		</div>
+		
+
+		<div class="article" id="titleRecs">
+
+			
+			<div style="width: 100%;">
+				<h2 class="rec_heading_wrapper" style="text-align: center">
+					<span class="rec_heading" data-spec="p13nsims:tt0111161"
+						style="display: inline; font-size: 22px;">More Like This&nbsp;</span>
+				</h2>
+			</div>
+			
+				<div class="movieBottom" style="width: 100%;">
+
+ 				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[1].title}}"> <img
+						height="113" width="76" th:title="${movieList[1].title}"
+						th:src="${movieList[1].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>
+
+
+				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[2].title}}"> <img
+						height="113" width="76" th:title="${movieList[2].title}"
+						th:src="${movieList[2].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>
+				
+<!-- 				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[3].title}}"> <img
+						height="113" width="76" th:title="${movieList[3].title}"
+						th:src="${movieList[3].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>  
+				
+				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[4].title}}"> <img
+						height="113" width="76" th:title="${movieList[4].title}"
+						th:src="${movieList[4].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>  
+				
+				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[5].title}}"> <img
+						height="113" width="76" th:title="${movieList[5].title}"
+						th:src="${movieList[5].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>  
+				
+				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[6].title}}"> <img
+						height="113" width="76" th:title="${movieList[6].title}"
+						th:src="${movieList[6].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>  
+				
+				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[7].title}}"> <img
+						height="113" width="76" th:title="${movieList[7].title}"
+						th:src="${movieList[7].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>  
+				
+				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[8].title}}"> <img
+						height="113" width="76" th:title="${movieList[8].title}"
+						th:src="${movieList[8].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>  
+				
+				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[9].title}}"> <img
+						height="113" width="76" th:title="${movieList[9].title}"
+						th:src="${movieList[9].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>  
+				
+				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[10].title}}"> <img
+						height="113" width="76" th:title="${movieList[10].title}"
+						th:src="${movieList[10].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>  
+				
+				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[11].title}}"> <img
+						height="113" width="76" th:title="${movieList[11].title}"
+						th:src="${movieList[11].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>  
+				
+				<div class="rec_item">
+					<a th:href="@{'/findMovie/' + ${movieList[12].title}}"> <img
+						height="113" width="76" th:title="${movieList[12].title}"
+						th:src="${movieList[12].poster}" class="loadlate rec_poster_img">
+						<br>
+					</a>
+				</div>    -->
+
+			</div>
+
+		</div>
+		<!-- 		End of Container -->
+
+	</div>
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>

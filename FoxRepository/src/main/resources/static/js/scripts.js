@@ -89,8 +89,44 @@
 		}
 		
 		else {
-			window.open("/find/" + frm1.fname.value, "_self")
+			window.open("/find/" + frm1.fname.value, "_self");
 		}
 	}
-    	
+	
+	function findMovie() {
+		
+		if (frm2.fname2.value === "") {
+			alert("Search box was empty");
+			
+			
+		}
+		
+		else {
+			window.open("/findMovie/" + frm2.fname2.value, "_self");
+		}
+	}
+	
+	function fontBasedOnValue(val1, val2) {
+		var imdb = document.getElementById('imdbRating');
+		var metascore = document.getElementById('metascore');
+		
+		
+			imdb.style.color="#D8DF7E";
+		
+	}
+	
+	function displayErrorMessage(errorMsg) {
+		if(errorMsg === "") {
+			
+		} 
+		
+		else {
+			alert(errorMsg);
+		}
+	}
+	
+
+	
+
+	
 	
