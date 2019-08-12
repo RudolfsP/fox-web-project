@@ -116,7 +116,7 @@
 	}
 	
 	function displayErrorMessage(errorMsg) {
-		if(errorMsg === "") {
+		if(errorMsg === "noError" || errorMsg === "null" || errorMsg.length === 0) {
 			
 		} 
 		

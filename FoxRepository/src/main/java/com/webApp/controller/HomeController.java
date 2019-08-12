@@ -224,10 +224,10 @@ public class HomeController {
 	public String findMovie(@PathVariable(name = "id") String id, Model model) {
 		try {
 			List<Movies> movieList = movieService.listAllMoviesByIDFromAPI(id);
-			String errorMessage = "";
+			String errorMessage = "noError";
 			
 			//real expression should be movieList.size() != 13
-			if (movieList.size() != 3) {
+			if (movieList.size() != 13) {
 				errorMessage = "Movie " + id + " was not found";
 				model.addAttribute("errorMessage", errorMessage);
 				return "movies";
