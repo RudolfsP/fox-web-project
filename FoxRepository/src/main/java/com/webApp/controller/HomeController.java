@@ -264,13 +264,47 @@ public class HomeController {
 			return "movies";
 		}
 	}
-		
-//	
-//	@RequestMapping(value = "/saveMovie", method = RequestMethod.POST)
-//	public void saveMovie(@ModelAttribute("movie") Movies movie) {
-//		movieService.save(movie);
-//
-//		//return "redirect:/foxTable";
-//	}
+	
+	@RequestMapping(value = "/api/findMovieAndSimilar/{id}")
+	public String returnMovieAndSimilarJSON(@PathVariable(name = "id") String id, Model model) {
+		try {
+			model.addAttribute("getMovieAndSimilar", movieService.listAllMoviesByIDFromAPI(id));
+			return "jsonTemplate";
+		} catch (Exception e) {
+			return "badRequest";
+		}
+	}
+	
+	@RequestMapping(value = "/api/findMovieData/{id}")
+	public String returnMovieJSON(@PathVariable(name = "id") String id, Model model) {
+		try {
+			model.addAttribute("getMovie", movieService.getMovieData(id));
+			return "jsonTemplate";
+		} catch (Exception e) {
+			return "badRequest";
+		}
+	}
+	
+	@RequestMapping(value = "/api/findRandomMovie")
+	public String returnRandomMovieJSON(Model model) {
+		try {
+			model.addAttribute("getRandomMovie", 
+					movieService.getMovieData(movieService.getRandomMovieName()));
+			return "jsonTemplate";
+		} catch (Exception e) {
+			return "badRequest";
+		}
+	}
+	
+	@RequestMapping(value = "/api/findRandomMovieAndSimilar")
+	public String findRandomAndSimilarJSON(Model model) {
+		try {
+			model.addAttribute("getRandomMovieAndSimilar", 
+					movieService.listAllMoviesByIDFromAPI(movieService.getRandomMovieName()));
+			return "jsonTemplate";
+		} catch (Exception e) {
+			return "badRequest";
+		}
+	}
 	
 }

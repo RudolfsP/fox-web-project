@@ -16,7 +16,7 @@ public class MovieService {
 	@Autowired
 	private MovieRepository repo;
 	
-	public List<Movies> listAll() {
+	public List<Movies> listAllFromDB() {
 		return repo.findAll();
 	}
 	
@@ -33,10 +33,8 @@ public class MovieService {
 	}
 	
 	public List<Movies> listAllMoviesByIDFromDB(String userSearch) {
-        //empty list where all the found foxes will be put
 		List<Movies> returnList = new ArrayList<Movies>();
-        //list of all foxes
-        List<Movies> movieList = listAll();
+        List<Movies> movieList = listAllFromDB();
         
         for(int i = 0; i < movieList.size(); i++) {
         	if(movieList.get(i).getTitle().equals(userSearch)) {
@@ -101,7 +99,7 @@ public class MovieService {
 			if(inputLine.contains("\"Name\"")) {
 				
 				//later change ************* counter < 13
-				if(counter != 0 && counter >= 1 && counter < 3 + smCounter) {
+				if(counter != 0 && counter >= 1 && counter < 13 + smCounter) {
 					inputLine = inputLine.substring(16);
 					inputLine = inputLine.replace("\"", "");
 					inputLine = inputLine.replace(" ", "-");
@@ -127,7 +125,7 @@ public class MovieService {
 		return movieList;
 	}
 	
-	private Movies getMovieData(String searchValue) throws Exception {
+	public Movies getMovieData(String searchValue) throws Exception {
 		List<String> movieDataList = new ArrayList<>();
 		Movies movie = new Movies();
 		
@@ -152,7 +150,6 @@ public class MovieService {
 			
 			movieDataList.removeIf(n -> (n.equals("")));
 	
-			
 			movie.setTitle(movieDataList.get(0));
 			movie.setYear(movieDataList.get(1));
 			movie.setRuntime(movieDataList.get(2));
