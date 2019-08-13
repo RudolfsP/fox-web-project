@@ -63,9 +63,12 @@
 			<optional>true</optional>
 		</dependency>
 
-
-
-
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-dependencies</artifactId>
+			<version>Greenwich.SR2</version>
+			<type>pom</type>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -76,14 +79,24 @@
 			</plugin>
 
 
+
 			<plugin>
-				<groupId>com.google.cloud.tools</groupId>
-				<artifactId>appengine-maven-plugin</artifactId>
-				<version>1.3.2</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<version>1</version>
+					<finalName>${project.name}-cf</finalName>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/cloud/config/*.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
 
 		</plugins>
 	</build>

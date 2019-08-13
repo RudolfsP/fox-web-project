@@ -8,12 +8,14 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
@@ -74,14 +76,8 @@ public class HomeController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveFox(@ModelAttribute("fox") Fox fox) {
 		service.save(fox);
-
 		return "redirect:/foxTable";
 	}
-
-//	@RequestMapping(value = "/postFox", method = RequestMethod.POST)
-//	public String addFox(@ModelAttribute("fox") Fox fox) {
-//		
-//	}
 
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditFoxPage(@PathVariable(name = "id") Long id) {
@@ -152,7 +148,6 @@ public class HomeController {
 		for (Fox f : listFoxes) {
 			urlList.add(f.getUrl());
 		}
-
 		// generate a random url, if there is a duplicate, generate again
 		String url = "";
 		int timeout = 0;
@@ -166,12 +161,10 @@ public class HomeController {
 				timeout++;
 				url = "https://picsum.photos/id/237/200/300";
 			}
-
 		}
 
 		// add to model when the image url is generated
 		model.addAttribute("randomUrl", url);
-
 		return "randomFox";
 	}
 
@@ -213,8 +206,8 @@ public class HomeController {
 		return url + randomNum + ".jpg";
 	}
 
+	// *************************************************************************************************************
 	// movie stuff begins here
-
 	@RequestMapping("/movies")
 	public String openMoviesPage() {
 		return "movies";
@@ -225,25 +218,25 @@ public class HomeController {
 		try {
 			List<Movies> movieList = movieService.listAllMoviesByIDFromAPI(id);
 			String errorMessage = "noError";
-			
-			//real expression should be movieList.size() != 13
+
+			// real expression should be movieList.size() != 13
 			if (movieList.size() != 13) {
 				errorMessage = "Movie " + id + " was not found";
 				model.addAttribute("errorMessage", errorMessage);
 				return "movies";
 			}
-			
+
 			model.addAttribute("movieList", movieList);
 			model.addAttribute("errorMessage", errorMessage);
-			
+
 			return "find_movie";
-			
+
 		} catch (Exception e) {
 			return "movies";
 		}
-	
+
 	}
-	
+
 	@RequestMapping("/randomMovie")
 	public String randomMovie(Model model) {
 
@@ -257,14 +250,14 @@ public class HomeController {
 			if (movieList.size() == 0) {
 				toReturn = "movies";
 			}
-			
+
 			return toReturn;
-			
+
 		} catch (Exception e) {
 			return "movies";
 		}
 	}
-	
+
 	@RequestMapping(value = "/api/findMovieAndSimilar/{id}")
 	public String returnMovieAndSimilarJSON(@PathVariable(name = "id") String id, Model model) {
 		try {
@@ -274,7 +267,7 @@ public class HomeController {
 			return "badRequest";
 		}
 	}
-	
+
 	@RequestMapping(value = "/api/findMovieData/{id}")
 	public String returnMovieJSON(@PathVariable(name = "id") String id, Model model) {
 		try {
@@ -284,27 +277,28 @@ public class HomeController {
 			return "badRequest";
 		}
 	}
-	
+
 	@RequestMapping(value = "/api/findRandomMovie")
 	public String returnRandomMovieJSON(Model model) {
+		System.out.println("find random movie api has been called");
 		try {
-			model.addAttribute("getRandomMovie", 
-					movieService.getMovieData(movieService.getRandomMovieName()));
+			model.addAttribute("getRandomMovie", movieService.getMovieData(movieService.getRandomMovieName()));
 			return "jsonTemplate";
 		} catch (Exception e) {
 			return "badRequest";
 		}
 	}
-	
+
 	@RequestMapping(value = "/api/findRandomMovieAndSimilar")
 	public String findRandomAndSimilarJSON(Model model) {
 		try {
-			model.addAttribute("getRandomMovieAndSimilar", 
+			model.addAttribute("getRandomMovieAndSimilar",
 					movieService.listAllMoviesByIDFromAPI(movieService.getRandomMovieName()));
 			return "jsonTemplate";
 		} catch (Exception e) {
 			return "badRequest";
 		}
 	}
-	
+
+
 }
