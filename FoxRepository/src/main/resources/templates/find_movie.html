@@ -35,9 +35,7 @@
 		<div>
 			<h2 class="rec_heading_wrapper" style="text-align: center">
 				<span class="rec_heading" data-spec="p13nsims:tt0111161"
-					style="display: inline;" th:text="${movieList[0].title}">&nbsp;</span>
-				
-			
+					style="display: inline;" th:text="${movieList[0].title}">&nbsp;</span>							
 			</h2>
 
 		
@@ -150,7 +148,7 @@
 				</div>
 
 
-				<div class="rec_item">
+ 				<div class="rec_item">
 					<a th:href="@{'/findMovie/' + ${movieList[2].title}}"> <img
 						height="113" width="76" th:title="${movieList[2].title}"
 						th:src="${movieList[2].poster}" class="loadlate rec_poster_img">
@@ -236,7 +234,7 @@
 						th:src="${movieList[12].poster}" class="loadlate rec_poster_img">
 						<br>
 					</a>
-				</div>
+				</div> 
 
 			</div>
 

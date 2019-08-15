@@ -1,14 +1,15 @@
 package com.webApp;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Transient;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-
 
 @Entity
 @EnableAutoConfiguration
@@ -34,11 +35,13 @@ public class Movies {
 	private String imdbRating;
 	private String votes;
 	private String type;
-	private String similarMovies;
+	
+	@Transient
+	private List<String> similarMovies;
 	
 	public Movies(String title, String year, String runtime, String genre, String director, String writer,
 			String actors, String plot, String lang, String country, String awards, String poster, String metascore,
-			String imdbRating, String votes, String type, String similarMovies) {
+			String imdbRating, String votes, String type) {
 		super();
 		this.title = title;
 		this.year = year;
@@ -56,7 +59,6 @@ public class Movies {
 		this.imdbRating = imdbRating;
 		this.votes = votes;
 		this.type = type;
-		this.similarMovies = similarMovies;
 	}
 
 
@@ -199,12 +201,21 @@ public class Movies {
 		this.type = type;
 	}
 
-	public String getSimilarMovies() {
+	public List<String> getSimilarMovies() {
 		return similarMovies;
 	}
 
-	public void setSimilarMovies(String similarMovies) {
+	public void setSimilarMovies(List<String> similarMovies) {
 		this.similarMovies = similarMovies;
+	}
+
+	@Override
+	public String toString() {
+		return this.title + "\n" + this.year + "\n" + this.runtime + "\n" + this.genre +
+				"\n" + this.director + "\n" + this.writer + "\n" + this.actors + "\n" +
+				this.plot + "\n" + this.lang + "\n" + this.country + "\n" + this.awards + "\n" +
+				this.poster + "\n" + this.metascore + "\n" + this.imdbRating + "\n" +
+				this.votes + "\n" + this.type;
 	}
 
 }

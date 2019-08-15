@@ -8,14 +8,12 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
@@ -219,22 +217,20 @@ public class HomeController {
 			List<Movies> movieList = movieService.listAllMoviesByIDFromAPI(id);
 			String errorMessage = "noError";
 
-			// real expression should be movieList.size() != 13
+			// real expression should be movieList.size() != 1
 			if (movieList.size() != 13) {
 				errorMessage = "Movie " + id + " was not found";
 				model.addAttribute("errorMessage", errorMessage);
 				return "movies";
 			}
-
 			model.addAttribute("movieList", movieList);
 			model.addAttribute("errorMessage", errorMessage);
 
 			return "find_movie";
-
+			
 		} catch (Exception e) {
 			return "movies";
 		}
-
 	}
 
 	@RequestMapping("/randomMovie")
