@@ -235,19 +235,22 @@ public class HomeController {
 
 	@RequestMapping("/randomMovie")
 	public String randomMovie(Model model) {
-
-		String toReturn = "find_movie";
+		String errorMessage = "noError";
 
 		try {
 			String randomMovie = movieService.getRandomMovieName();
 			List<Movies> movieList = movieService.listAllMoviesByIDFromAPI(randomMovie);
 			model.addAttribute("movieList", movieList);
 
-			if (movieList.size() == 0) {
-				toReturn = "movies";
+			if (movieList.size() != 13) {
+				errorMessage = "There was an issue finding the random movie";
+				model.addAttribute("errorMessage", errorMessage);
+				return "movies";
 			}
+			model.addAttribute("movieList", movieList);
+			model.addAttribute("errorMessage", errorMessage);
 
-			return toReturn;
+			return "find_movie";
 
 		} catch (Exception e) {
 			return "movies";

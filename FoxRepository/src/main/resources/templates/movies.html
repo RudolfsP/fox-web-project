@@ -7,16 +7,20 @@
 <title>Edit Fox</title>
 
 <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+
+
 <script src=/js/scripts.js>
 	// Function to change webpage background color
 </script>
 
 </head>
 
-<body id="body" th:onload="changeBothBackgrounds(); displayErrorMessage([[${errorMessage}]])">
+
+<body id="body" th:onload="changeBothBackgrounds(); displayErrorMessage([[${errorMessage}]]) ">
 	<div th:replace="common/header :: navbar" />
 
-
+	
 	<form class="form-inline" id="frm2">
 
 		<!-- <input type="text" name="fname" placeholder="Search by species or name"> -->

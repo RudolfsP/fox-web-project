@@ -58,6 +58,7 @@ public class MovieService {
 		con.setRequestMethod("GET");
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+		
 		String inputLine;
 		int counter = 0;
 		String toReturn = "";
@@ -177,14 +178,14 @@ public class MovieService {
 	private List<String> putSimilarInList(JSONObject jsonObject) {
 		List<String> similarMovies = new ArrayList<>();
 		
-		JSONObject jsonObject2 = (JSONObject) jsonObject.get("Similar");
-		JSONArray resultArray = (JSONArray)jsonObject2.get("Results");
+		JSONObject similarJson = (JSONObject) jsonObject.get("Similar");
+		JSONArray resultArray = (JSONArray)similarJson.get("Results");
 		
 		for(int i = 0; i < resultArray.size(); i++) {
-			JSONObject jsonObject3 = (JSONObject) resultArray.get(i);
+			JSONObject similarTypesJson = (JSONObject) resultArray.get(i);
 			
-			if(jsonObject3.get("Type").equals("movie") || jsonObject3.get("Type").equals("show")) {
-				similarMovies.add((String) jsonObject3.get("Name"));
+			if(similarTypesJson.get("Type").equals("movie") || similarTypesJson.get("Type").equals("show")) {
+				similarMovies.add((String) similarTypesJson.get("Name"));
 			}
 		}
 		
